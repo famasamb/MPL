@@ -12,5 +12,6 @@ class Periode extends Model
     protected $fillable = [
         'date_debut',
         'date_fin',
+        'est_ouverte',
     ];
 }

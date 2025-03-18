@@ -72,6 +72,18 @@
         <h1>Importation des Électeurs</h1>
     </div>
 
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <!-- Contenu principal -->
     <div class="container">
         <form action="{{ route('electeurs.import') }}" method="POST" enctype="multipart/form-data">

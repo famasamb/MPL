@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authentification</title>
+    <title>Connexion Candidat</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -11,19 +11,19 @@
             font-family: 'Arial', sans-serif;
         }
         .container {
-            max-width: 800px;
+            max-width: 500px;
             margin: 50px auto;
-            padding: 20px;
+            padding: 30px;
             background: white;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
             color: #00853e;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .form-label {
             font-weight: bold;
@@ -54,24 +54,15 @@
         .form-group {
             margin-bottom: 20px;
         }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-        }
-        .form-group input {
-            width: 100%;
+        .alert {
+            text-align: center;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Authentification</h1>
-
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        <h1>Connexion Candidat</h1>
 
         @if(session('error'))
             <div class="alert alert-danger">
@@ -79,14 +70,19 @@
             </div>
         @endif
 
-        <form action="{{ route('electeur.verifier_code') }}" method="POST">
+        <form action="{{ route('candidats.login') }}" method="POST">
             @csrf
-            <input type="hidden" name="parrain_id" value="{{ session('parrain_id') }}">
             <div class="form-group">
-                <label for="code_authentification" class="form-label">Code d'authentification :</label>
-                <input type="text" name="code_authentification" class="form-control" required>
+                <label for="email" class="form-label">Email :</label>
+                <input type="email" class="form-control" name="email" required placeholder="Entrez votre email">
             </div>
-            <button type="submit" class="btn btn-primary">Valider</button>
+
+            <div class="form-group">
+                <label for="code_auth" class="form-label">Code d’authentification :</label>
+                <input type="text" class="form-control" name="code_auth" required placeholder="Entrez votre code">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Se Connecter</button>
         </form>
     </div>
 </body>

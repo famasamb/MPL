@@ -27,6 +27,6 @@ class PeriodeController extends Controller
         // Enregistrer les dates
         Periode::create($request->all());
 
-        return redirect()->back()->with('success', 'Période de parrainage enregistrée.');
+        return redirect()->back()->with('success', 'Période de parrainage enregistrée avec succès.');
     }
 }

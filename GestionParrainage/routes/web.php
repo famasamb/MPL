@@ -6,10 +6,13 @@ use App\Http\Controllers\CandidatController;
 use App\Http\Controllers\ParrainController;
 use App\Http\Controllers\ParrainageController;
 use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\SuiviCandidatController;
+
 
 // Route pour la page d'accueil
 Route::get('/', function () {
     return view('accueil');
+    //return view('candidats/login');
     //return view('electeur/accueil');
 });
 
@@ -18,6 +21,8 @@ Route::post('/electeurs/import', [ElecteurController::class, 'storeImport'])->na
 
 Route::get('/candidats/enregistrer', [CandidatController::class, 'create'])->name('candidats.create');
 Route::post('/candidats/enregistrer', [CandidatController::class, 'store'])->name('candidats.store');
+Route::post('/candidats', [CandidatController::class, 'store'])->name('candidats.store');
+
 
 Route::get('/parrains/creer-compte', [ParrainController::class, 'create'])->name('parrains.create');
 Route::post('/parrains/creer-compte', [ParrainController::class, 'store'])->name('parrains.store');
@@ -33,10 +38,13 @@ Route::get('/parrainages/statistiques', [ParrainageController::class, 'statistiq
 Route::get('/candidats/evolution', [CandidatController::class, 'evolution'])->name('candidats.evolution');
 
 
+
+
 // === Routes pour les électeurs ===
 
 Route::get('/electeur/parrainage', [ElecteurController::class, 'showParrainageForm'])->name('electeur.parrainage');
-Route::post('/electeur/parrainage', [ElecteurController::class, 'processParrainage']);
+//Route::post('/electeur/parrainage', [ElecteurController::class, 'processParrainage']);
+Route::post('/electeur/parrainage', [ElecteurController::class, 'processParrainage'])->name('electeur.parrainage');
 
 
 // Route pour afficher le formulaire d'inscription (GET)
@@ -59,3 +67,11 @@ Route::get('/electeur/authentification', [ElecteurController::class, 'showAuthen
 
 // Route pour vérifier le code d'authentification
 Route::post('/electeur/verifier_code', [ElecteurController::class, 'verifierCode'])->name('electeur.verifier_code');
+
+
+// Routes pour le candidat (suivi des parrainages)
+Route::get('/candidats', [CandidatController::class, 'index'])->name('candidats.index');
+Route::get('/candidats/login', [SuiviCandidatController::class, 'loginForm'])->name('candidats.login');
+Route::post('/candidats/login', [SuiviCandidatController::class, 'login']);
+Route::get('/candidats/dashboard', [SuiviCandidatController::class, 'dashboard'])->name('candidats.dashboard');
+Route::get('/candidats/logout', [SuiviCandidatController::class, 'logout'])->name('candidats.logout');

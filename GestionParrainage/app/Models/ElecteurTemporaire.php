@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Electeur extends Model
+class ElecteurTemporaire extends Model
 {
     use HasFactory;
 
@@ -17,15 +17,5 @@ class Electeur extends Model
         'date_naissance',
         'lieu_naissance',
         'sexe',
-        'bureau_vote',
-        'telephone',
-        'email',
-        'code_authentification',
     ];
-
-    // Relation avec les parrainages
-    public function parrainages()
-    {
-        return $this->hasMany(Parrainage::class, 'electeur_id');
-    }
 }

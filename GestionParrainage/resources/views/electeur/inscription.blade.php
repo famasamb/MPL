@@ -78,8 +78,27 @@
                 <input type="text" name="numero_electeur" class="form-control" required>
             </div>
             <div class="form-group">
+                <label for="prenom" class="form-label">Prénom :</label>
+                <input type="text" name="prenom" class="form-control" required>
+            </div>
+            <div class="form-group">
                 <label for="nom" class="form-label">Nom :</label>
                 <input type="text" name="nom" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="date_naissance" class="form-label">Date de naissance :</label>
+                <input type="date" name="date_naissance" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="lieu_naissance" class="form-label">Lieu de naissance :</label>
+                <input type="text" name="lieu_naissance" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="sexe" class="form-label">Sexe :</label>
+                <select name="sexe" class="form-control" required>
+                    <option value="M">Masculin</option>
+                    <option value="F">Féminin</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="bureau_vote" class="form-label">Bureau de vote :</label>
